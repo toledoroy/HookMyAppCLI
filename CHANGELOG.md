@@ -7,6 +7,7 @@ All notable changes to `@gethookmyapp/cli` are documented here.
 ### Fixed
 
 - Updated the CLI's runtime and development dependency lock to patched npm releases and pinned local/CI Node 24 use to 24.22.1; Node.js `>=20` remains the supported runtime contract.
+- Refreshed compatible dependency releases, moved Vitest and coverage to 5.0.5, and aligned esbuild to 0.28.2 for the supported Vite peer range; Node.js `>=20` and existing telemetry collection behavior remain unchanged.
 
 ### Added
 
