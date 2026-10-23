@@ -1,4 +1,4 @@
-import { describe, test, expect, vi, beforeEach } from 'vitest';
+import { describe, test, expect, vi, beforeEach, afterEach } from 'vitest';
 
 // Mock isJsonMode so we can toggle per-test without commander gymnastics.
 // Path matches how token.ts imports isJsonMode — `../output/format.js`
@@ -35,6 +35,9 @@ describe('runChannelToken — gateway access-token summary', () => {
   beforeEach(() => {
     vi.mocked(apiClient).mockClear();
     stdoutSpy = vi.spyOn(process.stdout, 'write').mockImplementation(() => true);
+  });
+  afterEach(() => {
+    vi.restoreAllMocks();
   });
 
   test('When --json, then output is the wrapped shape carrying the full token', async () => {

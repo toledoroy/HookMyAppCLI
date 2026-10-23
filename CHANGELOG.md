@@ -4,6 +4,10 @@ All notable changes to `@gethookmyapp/cli` are documented here.
 
 ## Unreleased
 
+### Fixed
+
+- Updated the CLI's runtime and development dependency lock to patched npm releases and pinned local/CI Node 24 use to 24.22.1; Node.js `>=20` remains the supported runtime contract.
+
 ### Added
 
 - `sandbox env` now emits `VERIFY_TOKEN` (AIT-179) — the session's webhook verify token, distinct from `WEBHOOK_HMAC_SECRET`. `sandbox webhook set` runs the verify-GET handshake against it, so an unmodified starter-kit receiver configured via `sandbox env` now passes verification.

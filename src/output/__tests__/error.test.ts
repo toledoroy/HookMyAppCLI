@@ -1,4 +1,4 @@
-import { describe, it, test, expect, vi, beforeEach } from 'vitest';
+import { describe, it, test, expect, vi, beforeEach, afterEach } from 'vitest';
 import {
   CliError,
   AuthError,
@@ -48,6 +48,9 @@ describe('outputError JSON envelope (D1)', () => {
   beforeEach(() => {
     // eslint-disable-next-line @typescript-eslint/no-explicit-any
     stderrSpy = vi.spyOn(process.stderr, 'write').mockImplementation(() => true) as any;
+  });
+  afterEach(() => {
+    vi.restoreAllMocks();
   });
 
   test('When JSON mode, then envelope is nested under `error` with required fields', () => {

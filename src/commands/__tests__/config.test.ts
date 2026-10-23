@@ -1,4 +1,4 @@
-import { describe, test, expect, vi, beforeEach } from 'vitest';
+import { describe, test, expect, vi, beforeEach, afterEach } from 'vitest';
 import { Command } from 'commander';
 import { registerConfigCommand } from '../config.js';
 import { getPersistedEnv } from '../../config/env-profiles.js';
@@ -32,6 +32,9 @@ describe('config show --json (D7)', () => {
     vi.mocked(getPersistedEnv).mockReturnValue(undefined);
     vi.mocked(getPersistedTelemetry).mockReturnValue(null);
   });
+  afterEach(() => {
+    vi.restoreAllMocks();
+  });
 
   test('When --json, then output carries the same resolved fields as human mode', async () => {
     const program = new Command();
@@ -62,6 +65,9 @@ describe('config get --json (D7)', () => {
     stdoutSpy = vi.spyOn(console, 'log').mockImplementation(() => undefined);
     vi.mocked(getPersistedEnv).mockReturnValue(undefined);
     vi.mocked(getPersistedTelemetry).mockReturnValue(null);
+  });
+  afterEach(() => {
+    vi.restoreAllMocks();
   });
 
   test('When config get env --json with no persisted override, then value is omitted', async () => {
